@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SAID_should_be_numeric_and_13_digits</fullName>
+    <active>true</active>
+    <description>SAID should be numeric and 13 digits</description>
+    <errorConditionFormula>NOT(
+ OR(
+  LEN (ID__c) = 0,
+  REGEX(ID__c, &quot;[0-9]{13}&quot;)
+ )
+)</errorConditionFormula>
+    <errorMessage>The SA ID looks incorrect. It should be a 13 digit numeric ID.</errorMessage>
+</ValidationRule>

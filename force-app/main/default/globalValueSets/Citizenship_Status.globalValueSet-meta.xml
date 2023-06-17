@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>OTHERS</fullName>
+        <default>false</default>
+        <label>OTHERS</label>
+    </customValue>
+    <customValue>
+        <fullName>PERMANENT RESIDENT</fullName>
+        <default>false</default>
+        <label>PERMANENT RESIDENT</label>
+    </customValue>
+    <customValue>
+        <fullName>SA CITIZEN</fullName>
+        <default>false</default>
+        <label>SA CITIZEN</label>
+    </customValue>
+    <masterLabel>Citizenship Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,72 @@
+<template>
+    <lightning-card title="Holiday Finder For South Africans">
+       <div class="slds-box slds-theme_shade " style="margin: 18px">
+          <p class="slds-text-align_center" style="font-weight: bold;font-weight: 500;">Enter SA-ID to know holidays falling on your birthday in this year</p>
+       </div>
+       <div class="slds-grid slds-grid_pull-padded-small" style="height:100px; margin:4px">
+          <div class="slds-col slds-p-horizontal_medium">
+             <lightning-layout-item size="2" padding="around-small">
+                <!--Input text to Search-->
+                <lightning-input type="text" maxlength="13"
+                   value={searchKey} 
+                   onchange={handleChange}
+                   placeholder="Enter South African ID"
+                   > 
+                </lightning-input>
+             </lightning-layout-item >
+          </div>
+          <div class="slds-col slds-p-horizontal_medium">
+             <label class="slds-form-element__label"></label>
+             <lightning-layout-item size="2" padding="around-small" style="padding-top: 100px;">
+                <!--Search Button-->
+                <div class="slds-var-m-top_medium slds-var-p-right_medium">
+                   <lightning-button label="Search" variant="brand" onclick={ButtonClickHandler} disabled={disableButton}>
+                   </lightning-button>
+                </div>
+             </lightning-layout-item>
+          </div>
+       </div>
+       <template if:true={showError}>
+            <div class=" slds-box slds-box_x-small slds-text-color_error slds-text-align_center"><b>{errorMessage}</b></div>
+            
+       </template>
+       <template if:true={showResult}>
+          <lightning-card>
+             <div class="slds-box">
+                <div class="slds-grid slds-gutters">
+                   <div class="slds-col">
+                      <span><b>Citizen</b> <br>{resultapex.citizen}</span>
+                   </div>
+                   <div class="slds-col">
+                      <span><b>Date of birth (YYYYMMDD)</b><br>{resultapex.dob}</span>
+                   </div>
+                   <div class="slds-col">
+                      <span><b>Gender</b><br>{resultapex.gender}</span>
+                   </div>
+                   <div class="slds-col">
+                      <span><b>Search count</b><br>{resultapex.searchCounter}</span>
+                   </div>
+                </div>
+             </div>
+             <template for:each={resultapex.holidayMessage} for:item="object">
+                <div class="slds-box" key={object.nameH}>
+                   <lightning-card  variant="Narrow"  title={object.nameH}  icon-name="utility:tour_check">
+                      <div class="slds-grid slds-gutters">
+                         <label class="slds-p-horizontal_small" for="form-element-01">Holiday Date</label>
+                         <p class="slds-p-horizontal_small" >{object.dateH}</p>
+                      </div>
+                      <div class="slds-grid slds-gutters">
+                         <label class="slds-p-horizontal_small" for="form-element-01">Holiday Type</label>
+                         <p class="slds-p-horizontal_small" >{object.typeH}</p>
+                      </div>
+                      <div class="slds-grid slds-gutters">
+                         <label class="slds-p-horizontal_small" for="form-element-01">Description</label>
+                         <p class="slds-p-horizontal_small" >{object.descriptionH}</p>
+                      </div>
+                   </lightning-card>
+                </div>
+             </template>
+          </lightning-card>
+       </template>
+    </lightning-card>
+ </template>
